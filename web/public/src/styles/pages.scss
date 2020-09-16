@@ -1,0 +1,217 @@
+h1.title {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+
+    font-weight: bold;
+}
+
+p.subtitle {
+    font-size: 1.1em;
+    color: rgba(white, 0.7);
+    margin-bottom: 1em;
+    
+    a {
+        color: white;
+        font-weight: bold;
+        transition: color 0.5s ease;
+
+        &:hover {
+            color: rgba(white, 0.8);
+
+            transition: color 0.5s ease;
+        }
+    }
+}
+
+p.text {
+    line-height: 1.2em;
+    margin: 30px 0;
+    color: rgba(white, 0.9);
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    a {
+        color: white;
+        font-weight: bold;
+        transition: color 0.5s ease;
+
+        &:hover {
+            color: rgba(white, 0.8);
+
+            transition: color 0.5s ease;
+        }
+    }
+}
+
+div.question {
+    text-align: center;
+
+    font-size: 2.2em;
+    margin-top: 60px;
+    
+    min-height: 100px;
+
+    @include respond-to(handhelds) {
+        font-size: 1.5em;
+    }
+}
+
+div.navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    > .button {
+        width: 40%;
+        margin: 10px 20px;
+        padding: 10px 15px;
+        border-radius: 10px;
+        background-color: rgba(white, 0.2);
+        cursor: pointer;
+        transition: background-color 0.5s ease;
+
+        user-select: none;
+        text-transform: uppercase;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+
+        @include respond-to(handhelds) {
+            width: 100%;
+
+            margin: 5px 10px;
+        }
+        @include respond-to(medium) {
+            width: 40%;
+
+            margin: 5px 10px;
+        }
+
+        &:hover {
+            background-color: rgba(white, 0.4);
+            transition: background-color 0.5s ease;
+        }
+
+        &.disabled {
+            touch-action: none;
+            cursor: not-allowed;
+
+            background-color: rgba(darken(white, 20), 0.1);
+            color: darken(white, 20);
+        }
+
+        &.icon {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            i {
+                width: 25px;
+                display: inline-block;
+                font-size: 1.3em;
+            }
+        }
+    }
+}
+
+div.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    gap: 30px;
+    
+    @include respond-to(medium) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to(handhelds) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    > .card {
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgba(white, 0.2);
+
+        text-decoration: none;
+        color: white;
+        transition: 0.3s ease background-color;
+
+        &:not(.disabled) {
+            &:hover {
+                background-color: rgba(white, 0.3);
+    
+                transition: 0.3s ease background-color;
+            }
+        }
+
+        &.disabled {
+            //background-color: rgba(white, 0.1);
+            cursor: not-allowed;
+            filter: opacity(0.5);
+        }
+
+        &.image {
+            padding: 0px;
+
+            > .image img {
+                width: 100%;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            > .content {
+                padding: 20px;
+            }
+        }
+    }
+}
+
+div.text {
+    margin: 30px 0;
+
+    h2 {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 1.8em;
+    }
+
+    p {
+        line-height: 1.2em;
+        margin-bottom: 10px;
+
+        &:before {
+            content: "-";
+            padding: 10px;
+        }
+    }
+
+    a {
+        color: white;
+    }
+
+    > div.text {
+        margin: 0;
+        margin-left: 20px;
+    }
+}
+
+table {
+    margin-top: 30px;
+    width: 100%;
+    text-align: left;
+
+    tr {
+        line-height: 1.4em;
+        
+        th {
+            font-weight: bold;
+            padding-bottom: 10px
+        }
+
+        td {
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(white, 0.2)
+        }
+    }
+}

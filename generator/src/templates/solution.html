@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            padding: 0px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8em;
+        }
+
+        p {
+            margin: 0
+        }
+
+        div.input {
+            width: 100%;
+            min-height: 17px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid black;
+        }
+
+        header {
+            margin-bottom: 25px;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header>.name b {
+            font-size: 1.6em;
+        }
+
+        header>.info {
+            display: flex;
+        }
+
+        header>.info>div {
+            min-width: 150px;
+            margin: 0 6px;
+        }
+
+        header>.info>div.class {
+            min-width: 50px;
+        }
+
+        header>.info>div.date {
+            min-width: 100px;
+        }
+
+        main>.question {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            break-inside: avoid;
+        }
+
+        main>.question>.label {
+            font-size: 1.05em;
+            font-weight: bold;
+        }
+
+        main>.question>.label span {
+            display: inline-block;
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        main>.question>.help {
+            font-size: 0.7em;
+        }
+        main>.question>.help:last-of-type {
+            margin-bottom: 7px;
+        }
+        main>.question.selectone .options,
+        main>.question.selectmultiple .options {
+            display: flex;
+            flex-direction: column;
+            margin-left: 40px;
+        }
+
+        main>.question.selectone .options .option,
+        main>.question.selectmultiple .options .option {
+            position: relative;
+            margin: 3px 0;
+        }
+
+        main>.question.selectone .options .option:before,
+        main>.question.selectmultiple .options .option:before {
+            position: absolute;
+
+            content: " ";
+            left: -30px;
+            width: 10px;
+            top: 3px;
+            height: 10px;
+            border-radius: 50%;
+            border: 3px solid black;
+        }
+
+        main>.question.selectone .options .option.valid:before,
+        main>.question.selectmultiple .options .option.valid:before {
+            background-color: black;
+        }
+
+        main>.question.choices .statements {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main>.question.choices .statements .statement {
+            display: flex;
+            margin: 3px 0;
+        }
+
+        main>.question.choices .statements .choices {
+            display: flex;
+            margin-right: 30px;
+        }
+
+        main>.question.choices .statements .choices .choice {
+            margin-right: 12px;
+            position: relative;
+        }
+
+        main>.question.choices .statements .choices .choice b {
+            position: relative;
+        }
+
+        main>.question.choices .statements .choices .choice b:after {
+            content: " ";
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            border-radius: 50%;
+            border: 2px solid black;
+        }
+
+        main>.question.fill .sentences .sentence {
+            margin: 10px 0;
+        }
+        main>.question.fill .sentences .sentence span {
+            padding: 0 10px;
+            font-weight: bold;
+            text-decoration: underline;
+            width: 150px;
+        }
+
+        footer .grades {
+            width: max-content;
+            margin-top: 30px;
+            border: 2px solid black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        footer .title {
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        footer .grades .grade {
+            display: flex;
+        }
+
+        footer .grades .grade .range {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="name">
+            <b>%name%</b>
+            <p>bodový základ: %points%</p>
+        </div>
+    </header>
+
+    <main>
+        %questions%
+    </main>
+
+    <footer>
+        %grades%
+    </footer>
+</body>
+
+</html>

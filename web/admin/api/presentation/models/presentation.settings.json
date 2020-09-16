@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "presentations",
+  "info": {
+    "name": "Presentation"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "file": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "hours": {
+      "type": "string"
+    }
+  }
+}

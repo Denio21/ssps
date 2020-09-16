@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "schoolworks",
+  "info": {
+    "name": "schoolwork"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "shortcut": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "deadline": {
+      "type": "datetime"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "povinny",
+        "nepovinny"
+      ]
+    },
+    "reward": {
+      "type": "string"
+    },
+    "punish": {
+      "type": "string"
+    },
+    "start": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    }
+  }
+}

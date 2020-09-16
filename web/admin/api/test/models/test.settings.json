@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tests",
+  "info": {
+    "name": "Test"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "shortcut": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "topics": {
+      "type": "string",
+      "required": false
+    },
+    "date": {
+      "type": "date"
+    },
+    "question": {
+      "type": "text"
+    }
+  }
+}

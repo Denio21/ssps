@@ -5,8 +5,10 @@
         "date",
         "class"
     ],
+    "variants": 10,
     "shuffle": [
-        "options"
+        "options",
+        "questions"
     ],
     "questions": [
         {

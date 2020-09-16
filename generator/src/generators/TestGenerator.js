@@ -102,7 +102,20 @@ class TestGenerator {
 
         let count = 1;
 
-        for (let question of questions) {
+        let realQuestions = questions
+
+        if(shuffle.includes("questions")) {
+            let specialQuestions = questions.filter(q => q.special);
+            realQuestions = questions.filter(q => !q.special);
+            
+            this.shuffleArray(realQuestions);
+
+            realQuestions = realQuestions.concat(specialQuestions);
+        }
+
+        console.log(realQuestions);
+
+        for (let question of realQuestions) {
             questionsGenerated += "<div class='question " + question.type + "'>";
 
             questionsGenerated += "<div class='label'><span>" + (question.special == true ? "B" : count++) + ".</span>" + question.label + " <small>(___ / " + this.spellPoints(question.points) + ")</small></div>"

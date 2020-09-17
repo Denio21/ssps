@@ -1,19 +1,15 @@
 {
     "name": "Test č. 0",
-    "required": [
-        "name",
-        "date",
-        "class"
-    ],
-    "variants": 10,
-    "shuffle": [
-        "options",
-        "questions"
-    ],
+    "settings": {
+        "informations": ["name", "grade", "class"],
+        "variants": 1,
+        "shuffle": ["options", "questions"]
+    },
     "questions": [
         {
-            "type": "fill",
             "label": "Doplňte vhodné slovo.",
+            
+            "type": "fill",
             "points": 1,
 
             "sentences": [
@@ -28,8 +24,9 @@
             ]
         },
         {
-            "type": "choices",
             "label": "Jsou následující tvrzení platná (ANO) či nikoliv (NE)?",
+            
+            "type": "choices",
             "points": 3,
 
             "choices": [
@@ -53,11 +50,12 @@
             ]
         },
         {
-            "type": "selectmultiple",
             "label": "Co z vybraných je webový prohlížeč?",
+            
+            "type": "select",
             "points": 3,
 
-            "option": [
+            "options": [
                 {
                     "label": "Google",
                     "valid": false
@@ -73,11 +71,12 @@
             ]
         },
         {
-            "type": "selectone",
             "label": "Co je platná URL?",
+
+            "type": "select",
             "points": 2,
 
-            "option": [
+            "options": [
                 {
                     "label": "https://test.com:80/ahoj?a=b",
                     "valid": true
@@ -89,20 +88,22 @@
             ]
         },
         {
-            "type": "text",
+            "label": "Co je to double?",
             "special": true,
+
+            "type": "text",
             "points": 1,
 
-            "label": "Co je to double?",
 
             "valid": "Double je datový typ, většinou má volně plovoucí desetinou čárku."
         },
         {
+            "label": "Co je to double podruhé?",
+            
             "type": "text",
-            "multiline": 3,
             "points": 5,
 
-            "label": "Co je to double podruhé?",
+            "multiline": 3,
 
             "valid": "Double je datový typ, většinou má volně plovoucí desetinou čárku. Double je datový typ, většinou má volně plovoucí desetinou čárku. Double je datový typ, většinou má volně plovoucí desetinou čárku. Double je datový typ, většinou má volně plovoucí desetinou čárku. Double je datový typ, většinou má volně plovoucí desetinou čárku."
         }

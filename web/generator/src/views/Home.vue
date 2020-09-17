@@ -177,7 +177,7 @@
 
                   <button
                     class="button mini square place-right mt-2"
-                    @click="sentence.fill.push('')"
+                    @click="!sentence.fill ? $set(sentence, 'fill', ['']) : sentence.fill.push('')"
                   >
                     <span class="mif-plus"></span>
                   </button>
@@ -197,7 +197,7 @@
                 <div class="cell-sm-1">
                   <button
                     class="button mini square place-right mt-2"
-                    @click="question.sentences.push({ sentence: '', fill: []})"
+                    @click="!question.sentences ? $set(question, 'sentences', [{ sentence: '', fill: []}]) : question.sentences.push({ sentence: '', fill: []})"
                   >
                     <span class="mif-plus"></span>
                   </button>
@@ -229,7 +229,7 @@
                 <div class="cell-sm-1">
                   <button
                     class="button mini square place-right mt-2"
-                    @click="question.options.push({ label: '', valid: false})"
+                    @click="!question.options ? $set(question, 'options', [{ label: '', valid: false}]) : question.options.push({ label: '', valid: false})"
                   >
                     <span class="mif-plus"></span>
                   </button>
@@ -262,7 +262,7 @@
                 <div class="cell-sm-1">
                   <button
                     class="button mini square place-right mt-2"
-                    @click="question.choices.push('')"
+                    @click="!question.choices ? $set(question, 'choices', [' ']) : question.choices.push('')"
                   >
                     <span class="mif-plus"></span>
                   </button>
@@ -304,9 +304,11 @@
               <div class="row">
                 <div class="cell-sm-11">Nové tvrzení</div>
                 <div class="cell-sm-1">
+                  {{!question.statements}}
                   <button
+                    v-if="question.choices && question.choices.length > 0"
                     class="button mini square place-right mt-2"
-                    @click="question.statements.push({ label: '', valid: question.choices[0]})"
+                    @click="!question.statements ? $set(question, 'statements', [{ label: '', valid: question.choices[0]}]) : question.statements.push({ label: '', valid: question.choices[0]})"
                   >
                     <span class="mif-plus"></span>
                   </button>
@@ -409,7 +411,7 @@ export default {
           informations: [],
           shuffle: [],
         },
-        questions: {},
+        questions: [],
       });
       this.$store.commit("setFile", "test.json");
     },

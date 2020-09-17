@@ -411,7 +411,7 @@ export default {
         },
         questions: {},
       });
-      this.$store.commit("setFile", "test");
+      this.$store.commit("setFile", "test.json");
     },
     addedFile(e) {
       const files = e.target.files;

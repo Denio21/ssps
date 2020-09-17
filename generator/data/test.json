@@ -1,13 +1,16 @@
 {
     "name": "Test č. 0",
-    "required": [
-        "name",
-        "date",
-        "class"
-    ],
-    "shuffle": [
-        "options"
-    ],
+    "settings": {
+        "informations": [
+            "name",
+            "date",
+            "class"
+        ],
+        "shuffle": [
+            "options"
+        ],
+        "variants": 1
+    },
     "questions": [
         {
             "type": "fill",
@@ -51,11 +54,11 @@
             ]
         },
         {
-            "type": "selectmultiple",
+            "type": "select",
             "label": "Co z vybraných je webový prohlížeč?",
             "points": 3,
 
-            "option": [
+            "options": [
                 {
                     "label": "Google",
                     "valid": false
@@ -71,11 +74,11 @@
             ]
         },
         {
-            "type": "selectone",
+            "type": "select",
             "label": "Co je platná URL?",
             "points": 2,
 
-            "option": [
+            "options": [
                 {
                     "label": "https://test.com:80/ahoj?a=b",
                     "valid": true
@@ -97,7 +100,7 @@
         },
         {
             "type": "text",
-            "multiline": 3,
+            "lines": 3,
             "points": 5,
 
             "label": "Co je to double podruhé?",

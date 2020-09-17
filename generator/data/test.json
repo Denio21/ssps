@@ -103,7 +103,7 @@
             "type": "text",
             "points": 5,
 
-            "multiline": 3,
+            "lines": 3,
 
             "valid": "Double je datový typ, většinou má volně plovoucí desetinou čárku. Double je datový typ, většinou má volně plovoucí desetinou čárku. Double je datový typ, většinou má volně plovoucí desetinou čárku. Double je datový typ, většinou má volně plovoucí desetinou čárku. Double je datový typ, většinou má volně plovoucí desetinou čárku."
         }

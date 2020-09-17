@@ -118,7 +118,7 @@ class TestGenerator {
                 type: question.type,
                 suffix: question.special == true ? "B" : questionCount,
                 label: question.label,
-                points: question.points,
+                points: `<p>(<span class="space"></span> / ` + question.points + `)</p>`,
                 help: (type != undefined && type.getHelp(question, settings) != undefined ? "<p>(" + type.getHelp(question, settings) + ")</p>" : "") + (question.help ? "<p>(" + question.help + ")</p>" : ""),
                 content: type != undefined ? type.generateTest(question, settings) : ""
             }

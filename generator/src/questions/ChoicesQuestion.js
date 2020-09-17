@@ -15,8 +15,6 @@ class ChoicesQuestion extends Question {
         let output = "";
 
         output += "<div class='statements'>"
-
-        output += "<div class='statements'>"
         for (let statement of question.statements) {
             let choices = "";
 

@@ -162,6 +162,21 @@
             position: relative;
         }
 
+        main>.question.choices>.content .statements .choices .choice b {
+            position: relative;
+        }
+
+        main>.question.choices>.content .statements .choices .choice b:after {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid black;
+            transform: scale(1.3);
+        }
 
         main>.question.fill .sentences .sentence {
             margin: 10px 0;

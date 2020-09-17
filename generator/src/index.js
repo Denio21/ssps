@@ -33,7 +33,7 @@ for (let testFileName of testFiles) {
     const data = JSON.parse(fs.readFileSync("data/" + testFileName));
 
     if (testFileName.includes("test")) {
-        //solutionGenerator.generate(testFileName, data);
+        solutionGenerator.generate(testFileName, data, questions);
 
         testGenerator.generate(testFileName, data, questions);
     }

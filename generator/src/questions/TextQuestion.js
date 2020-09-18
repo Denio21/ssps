@@ -17,7 +17,7 @@ class TextQuestion extends Question {
     generateAssignment(question, settings) {
         let output = "";
 
-        const lines = question.lines != undefined ? question.lines : 1;
+        const lines = question.lines != undefined ? parseInt(question.lines) : 1;
         
         for(let i = 0; i < lines; i++)
             output += "<div class='input'></div>"

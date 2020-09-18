@@ -23,12 +23,12 @@ class AssignmentGenerator {
         return point + " bodů";
     }
 
-    calculateTotalPoints(questions) {
+    calculateTotalPoints(questions, special = false) {
         let points = 0;
 
         for (let question of questions)
-            if (question.special == undefined)
-                points += question.points;
+            if (special || question.special == undefined || question.special == false)
+                points += parseInt(question.points);
 
         return points;
     }
@@ -43,6 +43,7 @@ class AssignmentGenerator {
 
         const targetFile = targetDir + fileName.replace(".json", ".html");
         const points = this.calculateTotalPoints(assignment.questions);
+        const specialPoints = this.calculateTotalPoints(assignment.questions, true);
         const info = this.generateInfo(assignment.settings.informations, points);
 
         let assignments = "";
@@ -55,7 +56,7 @@ class AssignmentGenerator {
             const assignmentData = {
                 name: assignment.name,
                 questions: questions,
-                points: this.spellPoints(points),
+                points: "bodový základ: " + this.spellPoints(points) + " (+ " + this.spellPoints(specialPoints - points) + ")",
                 info: info
             };
 

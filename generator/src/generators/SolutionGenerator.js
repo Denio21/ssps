@@ -57,12 +57,12 @@ class SolutionGenerator {
         return gradesPercentages;
     }
 
-    calculateTotalPoints(questions) {
+    calculateTotalPoints(questions, special = false) {
         let points = 0;
 
         for (let question of questions)
-            if (question.special == undefined)
-                points += question.points;
+            if (special || question.special == undefined || question.special == false)
+                points += parseInt(question.points);
 
         return points;
     }
@@ -74,13 +74,14 @@ class SolutionGenerator {
 
         const questions = this.generateQuestions(assignment.questions, assignment.settings, questionTypes);
         const points = this.calculateTotalPoints(assignment.questions);
+        const specialPoints = this.calculateTotalPoints(assignment.questions, true);
         const gradesPercentages = this.calculateGradesPercentages(points);
         const grades = this.generateGrades(gradesPercentages, points);
 
         const solutionData = {
             name: "Řešení | " + assignment.name,
             questions: questions,
-            points: this.spellPoints(points),
+            points: "bodový základ: " + this.spellPoints(points) + " (+ " + this.spellPoints(specialPoints - points) + ")",
             grades: grades,
         };
 

@@ -67,10 +67,10 @@ class SolutionGenerator {
         return points;
     }
 
-    generate(fileName, test, questionTypes) {
+    generate(fileName, test, questionTypes, targetDir) {
         console.log("| Generating solution for " + test.name);
 
-        const targetFile = "out/" + fileName.replace(".json", "-solution.html");
+        const targetFile = targetDir + fileName.replace(".json", "-solution.html");
 
         const questions = this.generateQuestions(test.questions, test.settings, questionTypes);
         const points = this.calculateTotalPoints(test.questions);

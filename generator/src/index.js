@@ -26,15 +26,26 @@ const solutionGenerator = new SolutionGenerator();
 const TestGenerator = require("./generators/TestGenerator");
 const testGenerator = new TestGenerator();
 
-for (let testFileName of testFiles) {
-    if (!testFileName.includes(".json"))
-        continue;
+const PDFGenerator = require("./generators/PDFGenerator");
+const pdfGenerator = new PDFGenerator();
 
-    const data = JSON.parse(fs.readFileSync("data/" + testFileName));
-
-    if (testFileName.includes("test")) {
-        solutionGenerator.generate(testFileName, data, questions);
-
-        testGenerator.generate(testFileName, data, questions);
-    }
-} 
+(async () => {
+    for (let testFileName of testFiles) {
+        if (!testFileName.includes(".json"))
+            continue;
+    
+        const data = JSON.parse(fs.readFileSync("data/" + testFileName));
+    
+        const targetDir = __dirname + "/../out/" + testFileName.replace(".json", "/");
+        if(!fs.existsSync(targetDir))
+            fs.mkdirSync(targetDir);
+    
+        if (testFileName.includes("test")) {
+            solutionGenerator.generate(testFileName, data, questions, targetDir);
+    
+            testGenerator.generate(testFileName, data, questions, targetDir);
+    
+            await pdfGenerator.generate(testFileName, targetDir);
+        }
+    } 
+})();

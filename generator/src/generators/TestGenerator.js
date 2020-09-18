@@ -33,7 +33,7 @@ class TestGenerator {
         return points;
     }
 
-    generate(fileName, test, questionTypes) {
+    generate(fileName, test, questionTypes, targetDir) {
         console.log("| Generating test for " + test.name);
 
         const variants = test.settings.variants != undefined ? test.settings.variants : 1;
@@ -41,7 +41,7 @@ class TestGenerator {
         if (variants <= 0)
             console.log("\\- | Number of variants is below or zero. Cant generate anything.");
 
-        const targetFile = "out/" + fileName.replace(".json", ".html");
+        const targetFile = targetDir + fileName.replace(".json", ".html");
         const points = this.calculateTotalPoints(test.questions);
         const info = this.generateInfo(test.settings.informations, points);
 

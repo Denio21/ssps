@@ -14,7 +14,7 @@ class TextQuestion extends Question {
         return "<div class='input'>" + question.valid + "</div>";
     }
 
-    generateTest(question, settings) {
+    generateAssignment(question, settings) {
         let output = "";
 
         const lines = question.lines != undefined ? question.lines : 1;

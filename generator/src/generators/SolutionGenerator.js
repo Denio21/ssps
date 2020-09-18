@@ -67,18 +67,18 @@ class SolutionGenerator {
         return points;
     }
 
-    generate(fileName, test, questionTypes, targetDir) {
-        console.log("| Generating solution for " + test.name);
+    generate(fileName, assignment, questionTypes, targetDir) {
+        console.log("| Generating solution for " + assignment.name);
 
         const targetFile = targetDir + fileName.replace(".json", "-solution.html");
 
-        const questions = this.generateQuestions(test.questions, test.settings, questionTypes);
-        const points = this.calculateTotalPoints(test.questions);
+        const questions = this.generateQuestions(assignment.questions, assignment.settings, questionTypes);
+        const points = this.calculateTotalPoints(assignment.questions);
         const gradesPercentages = this.calculateGradesPercentages(points);
         const grades = this.generateGrades(gradesPercentages, points);
 
         const solutionData = {
-            name: "Řešení | " + test.name,
+            name: "Řešení | " + assignment.name,
             questions: questions,
             points: this.spellPoints(points),
             grades: grades,
@@ -108,6 +108,7 @@ class SolutionGenerator {
                 grade.max = "0" + grade.max;
 
             // It looks weird, i dont want to use it now, keep for future.
+            //
             //if (grade.min == grade.max)
             //    range = this.spellPoints(grade.max);
             //else

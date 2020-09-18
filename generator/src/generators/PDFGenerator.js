@@ -12,7 +12,7 @@ class PDFGenerator {
 
         const page = await browser.newPage();
         
-        await this.generateTest(page, fileName, targetDir);
+        await this.generateAssignment(page, fileName, targetDir);
         await this.generateSolution(page, fileName, targetDir);
         
         await browser.close();
@@ -20,7 +20,7 @@ class PDFGenerator {
         console.log("\\- | Done");
     }
 
-    async generateTest(page, fileName, targetDir) {
+    async generateAssignment(page, fileName, targetDir) {
         await page.goto(targetDir + fileName.replace(".json", ".html"), {
             waitUntil: 'networkidle2'
         });

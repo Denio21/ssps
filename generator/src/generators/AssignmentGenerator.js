@@ -3,10 +3,10 @@ const fs = require("fs");
 const replace = require("../helper/Replace");
 const shuffle = require("../helper/Shuffle");
 
-class TestGenerator {
+class AssignmentGenerator {
     constructor() {
-        this.testsTemplate = fs.readFileSync("src/templates/tests.html", "utf-8");
-        this.testTemplate = fs.readFileSync("src/templates/test.html", "utf-8");
+        this.assignmentsTemplate = fs.readFileSync("src/templates/assignments.html", "utf-8");
+        this.assignmentTemplate = fs.readFileSync("src/templates/assignment.html", "utf-8");
         this.questionTemplate = fs.readFileSync("src/templates/question.html", "utf-8");
     }
 
@@ -33,46 +33,46 @@ class TestGenerator {
         return points;
     }
 
-    generate(fileName, test, questionTypes, targetDir) {
-        console.log("| Generating test for " + test.name);
+    generate(fileName, assignment, questionTypes, targetDir) {
+        console.log("| Generating assignment for " + assignment.name);
 
-        const variants = test.settings.variants != undefined ? test.settings.variants : 1;
+        const variants = assignment.settings.variants != undefined ? assignment.settings.variants : 1;
 
         if (variants <= 0)
             console.log("\\- | Number of variants is below or zero. Cant generate anything.");
 
         const targetFile = targetDir + fileName.replace(".json", ".html");
-        const points = this.calculateTotalPoints(test.questions);
-        const info = this.generateInfo(test.settings.informations, points);
+        const points = this.calculateTotalPoints(assignment.questions);
+        const info = this.generateInfo(assignment.settings.informations, points);
 
-        let testsContent = "";
+        let assignments = "";
 
         for (let i = 0; i < variants; i++) {
             console.log("\\- | Variant " + (i + 1));
 
-            const questions = this.generateQuestions(test.questions, test.settings, questionTypes);
+            const questions = this.generateQuestions(assignment.questions, assignment.settings, questionTypes);
 
-            const testData = {
-                name: test.name,
+            const assignmentData = {
+                name: assignment.name,
                 questions: questions,
                 points: this.spellPoints(points),
                 info: info
             };
 
-            testsContent += replace(this.testTemplate, testData);
+            assignments += replace(this.assignmentTemplate, assignmentData);
         }
 
-        const testsData = {
-            name: test.name,
-            tests: testsContent
+        const assignmentsData = {
+            name: assignment.name,
+            assignments: assignments
         }
 
-        console.log("\\- | Writing test to " + targetFile);
-        fs.writeFileSync(targetFile, replace(this.testsTemplate, testsData));
+        console.log("\\- | Writing assignment to " + targetFile);
+        fs.writeFileSync(targetFile, replace(this.assignmentsTemplate, assignmentsData));
     }
 
     generateInfo(required, points) {
-        console.log("\\- | Generating test required info");
+        console.log("\\- | Generating assignment required info");
 
         let info = "";
 
@@ -90,13 +90,13 @@ class TestGenerator {
         return info;
     }
 
-    generateQuestions(testQuestions, settings, questionTypes) {
-        console.log("\\- | Generating test questions");
+    generateQuestions(assignmentQuestions, settings, questionTypes) {
+        console.log("\\- | Generating assignment questions");
 
         let questionCount = 1;
         let output = "";
 
-        let questions = testQuestions;
+        let questions = assignmentQuestions;
 
         if(settings.shuffle.includes("questions")) {
             let specialQuestions = questions.filter(q => q.special);
@@ -120,7 +120,7 @@ class TestGenerator {
                 label: question.label,
                 points: `<p>(<span class="space"></span> / ` + question.points + `)</p>`,
                 help: (type != undefined && type.getHelp(question, settings) != undefined ? "<p>(" + type.getHelp(question, settings) + ")</p>" : "") + (question.help ? "<p>(" + question.help + ")</p>" : ""),
-                content: type != undefined ? type.generateTest(question, settings) : ""
+                content: type != undefined ? type.generateAssignment(question, settings) : ""
             }
 
             output += replace(this.questionTemplate, data);
@@ -133,4 +133,4 @@ class TestGenerator {
     }
 }
 
-module.exports = TestGenerator;
+module.exports = AssignmentGenerator;

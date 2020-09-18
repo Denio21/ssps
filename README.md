@@ -21,7 +21,7 @@ Jedná se o webové stránky, které jsou nahrané na stránce https://cajthaml.
 Jedná se o CMS od Strapi, ve kterém spravuji informace, které se mají zobrazit studentům. 
 
 ### Generátor
-Jedná se o generátor písemných zkoušení a písemných domácích úkolů. Mezi hlavní výhody generátoru například patří velké rozmanité množství typů otázek. Lze například nastavit varianty, zamíchání otázek a možností. Tento repozitář neobsahuje data pro reálné písemné testy pro mé předměty.
+Jedná se o generátor písemných zkoušen, písemných domácích úkolů a pracovních listů. Mezi hlavní výhody generátoru například patří velké rozmanité množství typů otázek. Lze například nastavit varianty, zamíchání otázek a možností. Tento repozitář neobsahuje data pro reálné písemné testy pro mé předměty.
 
 ## Licence
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.

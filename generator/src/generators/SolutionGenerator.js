@@ -76,7 +76,7 @@ class SolutionGenerator {
         const points = this.calculateTotalPoints(assignment.questions);
         const specialPoints = this.calculateTotalPoints(assignment.questions, true);
         const gradesPercentages = this.calculateGradesPercentages(points);
-        const grades = this.generateGrades(gradesPercentages, points);
+        const grades = this.generateGrades(gradesPercentages, points, specialPoints);
 
         const solutionData = {
             name: "Řešení | " + assignment.name,
@@ -89,7 +89,7 @@ class SolutionGenerator {
         fs.writeFileSync(targetFile, replace(this.solutionTemplate, solutionData));
     }
 
-    generateGrades(gradesPercentages, points) {
+    generateGrades(gradesPercentages, points, specialPoints) {
         const maxLength = (points + "").split("").length;
 
         console.log("\\- | Generating solution grades");
@@ -118,6 +118,9 @@ class SolutionGenerator {
 
             grades += "<div class='grade'><div class='range'>" + range + "</div> => " + grade.grade + "</div>";
         }
+
+        const lastGrade = gradesPercentages[gradesPercentages.length - 1];
+        grades += "<div class='grade'><div class='range'>" + (parseInt(lastGrade.max) + 1) + " - " + this.spellPoints(specialPoints) + "</div> => " + lastGrade.grade + "*</div>";
 
         grades += "</div>"
 

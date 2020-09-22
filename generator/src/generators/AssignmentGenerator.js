@@ -78,7 +78,7 @@ class AssignmentGenerator {
         let info = "";
 
         if (required.includes("name"))
-            info += `<div class="name"><p>Jméno a příjmení</p><div class="input"></div></div>`;
+            info += `<div class="name"><p>Příjmení a jméno</p><div class="input"></div></div>`;
         
             if (required.includes("class"))
             info += `<div class="class"><p>Třída</p><div class="input"></div></div>`;
@@ -119,7 +119,7 @@ class AssignmentGenerator {
                 type: question.type,
                 suffix: question.special == true ? "B" : questionCount,
                 label: question.label,
-                points: `<p>(<span class="space"></span> / ` + question.points + `)</p>`,
+                points: `<p>(<span class="space"></span>&nbsp;/&nbsp;` + question.points + `)</p>`,
                 help: (type != undefined && type.getHelp(question, settings) != undefined ? "<p>(" + type.getHelp(question, settings) + ")</p>" : "") + (question.help ? "<p>(" + question.help + ")</p>" : ""),
                 content: type != undefined ? type.generateAssignment(question, settings) : ""
             }

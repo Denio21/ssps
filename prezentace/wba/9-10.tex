@@ -8,7 +8,7 @@
 \usepackage{listings}
 \usepackage{alltt,xcolor}
 
-\title{Základy CSS}
+\title{Směrování, odsazení, pseudotřídy}
 \date{WBA | 9., 10. hodina}
 \author[Cajthaml]{Matěj Cajthaml}
 
@@ -32,38 +32,451 @@
 \end{frame}
 
 
+\section{Opakování}
 
-\section{Co je to CSS}
-
-\begin{frameImg}[width]{img/cssrender.png}
-    \vspace*{60mm}
+\begin{frame}{Opakování}
     \begin{cardTiny}
-        \vspace*{\fill}
         \begin{center}
-            \textbf{CSS}
+            \textbf{Co je to HTML entita?}
         \end{center}
     \end{cardTiny}
-\end{frameImg}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Naco slouží vlastnost letter-spacing?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jak nastavíme barvu textu a pozadí?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jaký je rozdíl mezi identifikátorem a třídou?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jaké znáte selektory?}
+        \end{center}
+    \end{cardTiny}
+\end{frame}
 
-\begin{frame}{CSS}
+
+\section{Směrování}
+
+\begin{frame}{Odkazy}
     \begin{cardTiny}
         \begin{flushleft}
-            = \textbf{Cascading Style Sheets}.
+            Na stránce můžeme odkazovat na:
 
-            Definice stylů stránky, které jsou nezávislé na HTML.
+            - soubory HTML na dané stránce
+            
+            - další webové stránky
+            
+            - speciální odkazy (email, telefony, ...)
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
 
-            Způsob zobrazení (designu) prvků na stránce.
+\begin{frame}{Odkazy}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Pomocí tagu \texttt{a} a atributu \texttt{href}.
+
+            Může obsahovat další obsah.
+
+            Funguje tzv. adresářový systém - složky.
 
             \vspace{2ex}
-            Barva a velikost písma, zarovnání, rámečky, odsazení...
+
+            Relativní vs. absolutní cesta.
+
+            Rodičovská složka - \texttt{..}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{E-maily}
+    \begin{cardTiny}
+        \begin{flushleft}
+            \begin{alltt}\textbf{$<$\textcolor{red}{a} href=$"$mailto:matej.cajthaml@ssps.cz$"$$>$}Napište mi!\textbf{$<$/\textcolor{red}{a}$>$}\end{alltt}
+        
+            Otevření e-mailového klienta.
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Telefon}
+    \begin{cardTiny}
+        \begin{flushleft}
+            \begin{alltt}\textbf{$<$\textcolor{red}{a} href=$"$tel:+420000000000$"$$>$}Nevolejte mi!\textbf{$<$/\textcolor{red}{a}$>$}\end{alltt}
+        
+            Otevření aplikace na volání.
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Odkaz na jinou stránku}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Zadáváme celou URL adresu. Všechny povinné části URL.
+
+            \begin{alltt}\textbf{$<$\textcolor{red}{a} href=$"$https://ssps.cz/$"$$>$}Webové stránky Smíchovské SPŠ\textbf{$<$/\textcolor{red}{a}$>$}\end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Odkaz na stejnou stránku}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Zadáváme absolutní nebo relativní cestu se souborem a příponou.
+
+            \begin{alltt}\textbf{$<$\textcolor{red}{a} href=$"$studenti/cajthaml.html$"$$>$}Cajthaml\textbf{$<$/\textcolor{red}{a}$>$}\end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+
+\section{Návěstí}
+
+\begin{frame}{Návěstí}
+    \begin{cardTiny}
+        \begin{flushleft}
+            = \textbf{jedinečný záchytný bod webové stránky}.
+
+            Nekonečné množství.
+
+            V URL se nazývá kotva.
+
+            Určuje se pomocí atributu \texttt{id} - identifikátoru.
+
+            Kotvě - navěstí se říká až při použítí \texttt{\#<nazev>}.
+
+            \begin{alltt}\textbf{$<$\textcolor{red}{a} href=$"$\#kontakt$"$$>$}Vzhůru na kontakt\textbf{$<$/\textcolor{red}{a}$>$}\end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Návěstí}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Absence tagu s identifikátorem.
+            
+            \vspace{2ex}
+
+            Při kliku se stránka naroluje na pozici tagu.
+
+            \vspace{2ex}
+
+            Chování na začátku a na konci stránky.
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+
+\section{Nové tagy}
+
+\begin{frame}{Blokový prvek - div}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Podobný textovému prvku span. Nemá žádný styl. Určen pro seskupení informací a stylování.
+            
+            \vspace{2ex}
+
+            Zápis: \begin{alltt}\textbf{$<$\textcolor{red}{div}$>$}...\textbf{$<$/\textcolor{red}{div}$>$}\end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Linkování stylů - link}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Již použit při základech linkování stylů. Potřebné atributy \texttt{rel} a \texttt{href}.
+            
+            Nepárový tag.
+
+            \vspace{2ex}
+
+            Zápis: \begin{alltt}\textbf{$<$\textcolor{red}{link} rel=$"$stylesheet$"$ href=$"$style.css$"$$>$}\end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Naformátovaný text - pre}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Podobný obyčejnému paragrafu. Neupravuje zadaný text, zanechává tabulátory, mezery a zalomení řádků.
+
+            Monospaced font.
+
+            \vspace{2ex}
+
+            Zápis: \begin{alltt}\textbf{$<$\textcolor{red}{pre}$>$}...\textbf{$<$/\textcolor{red}{pre}$>$}\end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+
+\section{Odsazení}
+
+\begin{frame}
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sizing-chromium.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Odsazení}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Velmi důležitá část webových stránek.
+
+            \vspace{2ex}
+
+            Každý tag má předefinované styly.
+            
+            \vspace{2ex}
+        
+            Přepisování stylů.
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Velikost}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Vlastnosti \texttt{width} a \texttt{height}.
+
+            \vspace{2ex}
+
+            Blokové elementy. 
+
+            Nejčastěji px, cm, procenta, ...
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Odsazení z venku}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Vlastnost \texttt{margin}.
+
+            \vspace{2ex}
+
+            Nepočitá se do velikosti tagu.
+
+            Možnost určení pro každou stranu separé.
+
+            Sdružená vlastnost.
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Odsazení uvnitř}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Vlastnost \texttt{padding}.
+
+            \vspace{2ex}
+
+            Možnost určení pro každou stranu separé.
+
+            Sdružená vlastnost.
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Ohraničení}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Vlastnost \texttt{border}.
+
+            \vspace{2ex}
+
+            Možno nastavit pro každou stranu separé.
+
+            Vlastnosti \texttt{width}, \texttt{style}, \texttt{color}.
+
+            Sdružená vlastnost.
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Ohraničení - zaoblení}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Vlastnost \texttt{border-radius}.
+
+            \vspace{2ex}
+
+            Nejčastěji px a \%.
+
+            Možnost pro každý roh separé.
+
+            Sdružená vlastnost.
         \end{flushleft}
     \end{cardTiny}
 \end{frame}
 
 \begin{frame}
     \begin{center}
-        \includegraphics[width=\textwidth]{img/html-7-8-ukol.png}
+        \includegraphics[width=\textwidth]{img/9-10-ukol-odsazeni.png}
     \end{center}
+\end{frame}
+
+\section{Nové vlastnosti}
+
+\begin{frame}{text-transform}
+    \begin{cardTiny}
+        Nastavení velikost písmen v textu.
+
+        Hodnoty: uppercase, lowercase, capitalize.
+
+        \begin{alltt}
+            \textcolor{red}{.special} \string{\\
+                \textcolor{blue}{text-transform}: \textcolor{orange}{uppercase};\\
+            \string}
+        \end{alltt}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{text-align-last}
+    \begin{cardTiny}
+        Podobné text-align, jen určuje poslední řádku.
+
+        \begin{alltt}
+            \textcolor{red}{.special} \string{\\
+                \textcolor{blue}{text-align}: \textcolor{orange}{justify};\\
+                \textcolor{blue}{text-align-last}: \textcolor{orange}{right};\\
+            \string}
+        \end{alltt}
+    \end{cardTiny}
+\end{frame}
+
+
+\section{Pseudotřídy}
+
+\begin{frame}{Pseudotřída}
+    \begin{cardTiny}
+        \begin{flushleft}
+            = \textbf{speciální typ selektoru, reflektující určitý stav tagu}.
+
+            Např. najetí myši, stav zobrazení odkazu, první písmeno, ...
+
+            V budoucnu různé animace.
+
+            Možnost změnit všechny vlastnosti, i ty, které nebyly nastaveny.
+
+            \begin{alltt}
+                \textcolor{red}{.special:pseudotrida} \string{\\
+                    \textcolor{gray}{/* styly */}\\
+                \string}
+            \end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Pseudotřída - hover}
+    \begin{cardTiny}
+        \begin{flushleft}
+            = \textbf{při najetí myši}.
+
+            \begin{alltt}
+                \textcolor{red}{.special:hover} \string{\\
+                    \textcolor{gray}{/* styly */}\\
+                \string}
+            \end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Pseudotřída - active}
+    \begin{cardTiny}
+        \begin{flushleft}
+            = \textbf{aktivní prvek, např. zvýrazněný tabem}.
+
+            \begin{alltt}
+                \textcolor{red}{.special:active} \string{\\
+                    \textcolor{gray}{/* styly */}\\
+                \string}
+            \end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Pseudotřída - link}
+    \begin{cardTiny}
+        \begin{flushleft}
+            = \textbf{nezobrazený odkaz}.
+
+            \begin{alltt}
+                \textcolor{red}{a:link} \string{\\
+                    \textcolor{gray}{/* styly */}\\
+                \string}
+            \end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Pseudotřída - visited}
+    \begin{cardTiny}
+        \begin{flushleft}
+            = \textbf{zobrazený odkaz}.
+
+            \begin{alltt}
+                \textcolor{red}{a:visited} \string{\\
+                    \textcolor{gray}{/* styly */}\\
+                \string}
+            \end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
+\section{Shrnutí}
+
+\begin{frame}{Shrnutí}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Co vše se dá nastavit ve vlastnosti border?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Co je to sdružená vlastnost?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{K čemu slouží vlastnost text-align-last, word-spacing, padding?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Co je to pseudotřída?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jakým tagem se určuje přeškrtnuté písmo?}
+        \end{center}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/9-10-ukol-pseudotridy.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Domácí úkol}
+    \begin{cardTiny}
+        \begin{center}
+            ÚKOL
+        \end{center}
+        \begin{flushleft}
+            Vytvořte odstavec, který bude mít žluté pozadí, černý text, písmo Comic Sans MS ve variantě italics a tloušťce 900. Použijte vnitřní odsazení zleva a zezdola s hodnotou 20px. Udělejte zaoblené rohy vlevo dole a vpravo nahoře na 50\%. Nastavte mezery mezi písmeny na -2px. Velikost písma nastavte na 4 řádky normálního písma.
+        \end{flushleft}
+    \end{cardTiny}
 \end{frame}
 
 \end{document}

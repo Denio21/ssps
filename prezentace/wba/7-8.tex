@@ -31,7 +31,62 @@
     \end{cardTiny}
 \end{frame}
 
-\section{Opakování HTML}
+\section{Opakování}
+\begin{frame}{Opakování 1}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Co je to HTML entita?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Proč se nesmí křížit tagy?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jaký je rozdíl mezi tagem a elementem?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jaký je rozdíl mezi identifikátorem a třídou?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jakým tagem se určuje nadpis stránky?}
+        \end{center}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Shrnutí 2}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jaké části struktury musí webová stránka vždy obsahovat?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Co je to vývojové prostředí?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jak se v HTML zapisuje komentář?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jaký je rozdíl mezi vektorovým a pixelovým obrázkem?}
+        \end{center}
+    \end{cardTiny}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{Jakým tagem se určuje tlusté písmo?}
+        \end{center}
+    \end{cardTiny}
+\end{frame}
 
 
 \section{Co je to CSS}
@@ -295,9 +350,15 @@
 
 \begin{frame}{Dedičnost}
     \begin{cardTiny}
-        Vlastnosti se z rodiče předávají všem dětem.
+        Vlastnosti se z rodiče předávají \textbf{všem} dětem.
 
-        Předávají se i před další děti, pokud je jejich rodič nepřepíše.
+        Předávají se i přes další děti, pokud je jejich rodič nepřepíše.
+
+        \vspace{2ex}
+
+        Znak \texttt{>} pro přímého dedice.
+
+        Znak \texttt{mezery} pro kohokoliv v hierarchii.
     \end{cardTiny}
 \end{frame}
 
@@ -349,6 +410,8 @@
     \begin{cardTiny}
         \begin{flushleft}
             \textit{line BReak} = Nová řádka
+
+            Vyvarovat se používání - často má neočekávané chování.
 
             Zápis: \begin{alltt}\textbf{$<$\textcolor{red}{br}$ />$}\end{alltt}
         \end{flushleft}
@@ -402,6 +465,16 @@
     \end{cardTiny}
 \end{frame}
 
+\begin{frame}{Formátování textu - span}
+    \begin{cardTiny}
+        \begin{flushleft}
+            Tag \texttt{span} neurčuje nic. Slouží k reprezentaci části v textu pro stylování.
+
+            Zápis: \begin{alltt}\textbf{$<$\textcolor{red}{span}$>$}speciální část textu\textbf{$<$/\textcolor{red}{span}$>$}\end{alltt}
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
 
 
 \section{CSS hodnoty}
@@ -444,6 +517,12 @@
             \end{alltt}
         \end{flushleft}
     \end{cardTiny}
+\end{frame}
+
+\begin{frame}{RGB}
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{img/rgb.jpg}
+    \end{center}
 \end{frame}
 
 \begin{frame}{CSS barvy - HEX}
@@ -600,6 +679,30 @@
     \end{cardTiny}
 \end{frame}
 
+\begin{frame}{CSS vlastnosti - word-spacing}
+    \begin{cardTiny}
+        Vzdálenost mezi jednotlivými slovy. 
+
+        \begin{alltt}
+            \textcolor{red}{.special} \string{\\
+                \textcolor{blue}{word-spacing}: \textcolor{orange}{10px};\\
+            \string}
+        \end{alltt}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{CSS vlastnosti - letter-spacing}
+    \begin{cardTiny}
+        Vzdálenost mezi jednotlivými písmeny. 
+
+        \begin{alltt}
+            \textcolor{red}{.special} \string{\\
+                \textcolor{blue}{letter-spacing}: \textcolor{orange}{-1px};\\
+            \string}
+        \end{alltt}
+    \end{cardTiny}
+\end{frame}
+
 
 \section{Shrnutí}
 
@@ -608,5 +711,31 @@
         \includegraphics[width=\textwidth]{img/html-7-8-ukol.png}
     \end{center}
 \end{frame}
+
+\begin{frame}
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/html-7-8-ukol-2.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Domácí úkol}
+    \begin{cardTiny}
+        \begin{center}
+            \textbf{NE}POVINNÝ DOMÁCÍ ÚKOL
+        \end{center}
+        \begin{flushleft}
+            Dle screenshotu, který je přiložen na níže uvedené webové stránce, vytvořte jednoduchý web za použítí znalostí z posledních čtyř hodin. Kód (v souboru HTML společně s CSS) odešlete na email \href{mailto:matej.cajthaml@ssps.cz}{matej.cajthaml@ssps.cz}. 
+
+            \vspace{2ex}
+            Viz. \textbf{\href{https://cajthaml.eu/predmet/wba/ukol/zaklady-css-covid}{https://cajthaml.eu/predmet/wba/ukol/zaklady-css-covid}}
+
+            Termín: 3. 10. 2020 do 15:00
+
+            \vspace{2ex}
+            Bodový základ: 0 bodů, maximální zisk: 3 body.
+        \end{flushleft}
+    \end{cardTiny}
+\end{frame}
+
 
 \end{document}

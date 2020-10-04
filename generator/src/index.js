@@ -18,23 +18,32 @@ for (let questionFileName of questionFiles) {
 }
 
 
-const testFiles = fs.readdirSync("data/");
+const assignmentFiles = fs.readdirSync("data/");
 
 const SolutionGenerator = require("./generators/SolutionGenerator");
 const solutionGenerator = new SolutionGenerator();
 
-const TestGenerator = require("./generators/TestGenerator");
-const testGenerator = new TestGenerator();
+const AssignmentGenerator = require("./generators/AssignmentGenerator");
+const assignmentGenerator = new AssignmentGenerator();
 
-for (let testFileName of testFiles) {
-    if (!testFileName.includes(".json"))
-        continue;
+const PDFGenerator = require("./generators/PDFGenerator");
+const pdfGenerator = new PDFGenerator();
 
-    const data = JSON.parse(fs.readFileSync("data/" + testFileName));
+(async () => {
+    for (let assignmentFileName of assignmentFiles) {
+        if (!assignmentFileName.includes(".json"))
+            continue;
 
-    if (testFileName.includes("test")) {
-        solutionGenerator.generate(testFileName, data, questions);
+        const data = JSON.parse(fs.readFileSync("data/" + assignmentFileName));
 
-        testGenerator.generate(testFileName, data, questions);
+        const targetDir = __dirname + "/../out/" + assignmentFileName.replace(".json", "/");
+        if (!fs.existsSync(targetDir))
+            fs.mkdirSync(targetDir);
+
+        solutionGenerator.generate(assignmentFileName, data, questions, targetDir);
+
+        assignmentGenerator.generate(assignmentFileName, data, questions, targetDir);
+
+        await pdfGenerator.generate(assignmentFileName, targetDir);
     }
-} 
+})();

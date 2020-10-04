@@ -57,30 +57,31 @@ class SolutionGenerator {
         return gradesPercentages;
     }
 
-    calculateTotalPoints(questions) {
+    calculateTotalPoints(questions, special = false) {
         let points = 0;
 
         for (let question of questions)
-            if (question.special == undefined)
-                points += question.points;
+            if (special || question.special == undefined || question.special == false)
+                points += parseInt(question.points);
 
         return points;
     }
 
-    generate(fileName, test, questionTypes) {
-        console.log("| Generating solution for " + test.name);
+    generate(fileName, assignment, questionTypes, targetDir) {
+        console.log("| Generating solution for " + assignment.name);
 
-        const targetFile = "out/" + fileName.replace(".json", "-solution.html");
+        const targetFile = targetDir + fileName.replace(".json", "-solution.html");
 
-        const questions = this.generateQuestions(test.questions, test.settings, questionTypes);
-        const points = this.calculateTotalPoints(test.questions);
+        const questions = this.generateQuestions(assignment.questions, assignment.settings, questionTypes);
+        const points = this.calculateTotalPoints(assignment.questions);
+        const specialPoints = this.calculateTotalPoints(assignment.questions, true);
         const gradesPercentages = this.calculateGradesPercentages(points);
-        const grades = this.generateGrades(gradesPercentages, points);
+        const grades = this.generateGrades(gradesPercentages, points, specialPoints);
 
         const solutionData = {
-            name: "Řešení | " + test.name,
+            name: "Řešení | " + assignment.name,
             questions: questions,
-            points: this.spellPoints(points),
+            points: "bodový základ: " + this.spellPoints(points) + " (+ " + this.spellPoints(specialPoints - points) + ")",
             grades: grades,
         };
 
@@ -88,7 +89,7 @@ class SolutionGenerator {
         fs.writeFileSync(targetFile, replace(this.solutionTemplate, solutionData));
     }
 
-    generateGrades(gradesPercentages, points) {
+    generateGrades(gradesPercentages, points, specialPoints) {
         const maxLength = (points + "").split("").length;
 
         console.log("\\- | Generating solution grades");
@@ -108,6 +109,7 @@ class SolutionGenerator {
                 grade.max = "0" + grade.max;
 
             // It looks weird, i dont want to use it now, keep for future.
+            //
             //if (grade.min == grade.max)
             //    range = this.spellPoints(grade.max);
             //else
@@ -116,6 +118,9 @@ class SolutionGenerator {
 
             grades += "<div class='grade'><div class='range'>" + range + "</div> => " + grade.grade + "</div>";
         }
+
+        const lastGrade = gradesPercentages[gradesPercentages.length - 1];
+        grades += "<div class='grade'><div class='range'>" + (parseInt(lastGrade.max) + 1) + " - " + this.spellPoints(specialPoints) + "</div> => " + lastGrade.grade + "*</div>";
 
         grades += "</div>"
 

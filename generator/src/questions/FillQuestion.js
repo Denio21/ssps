@@ -31,7 +31,7 @@ class FillQuestion extends Question {
         return output;
     }
 
-    generateTest(question, settings) {
+    generateAssignment(question, settings) {
         let output = "";
 
         if (settings.shuffle.includes("options"))

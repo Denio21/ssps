@@ -12,8 +12,8 @@ class Question {
         throw new Error("You have to implement the method generateSolution!");
     }
 
-    generateTest(question, settings) {
-        throw new Error("You have to implement the method generateTest!");
+    generateAssignment(question, settings) {
+        throw new Error("You have to implement the method generateAssignment!");
     }
 
 }

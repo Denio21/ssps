@@ -17,6 +17,9 @@ Projekt obsahuje prezentace vytvořené pro budoucí hodiny a pokud není vystav
 ### Webové stránky
 Jedná se o webové stránky, které jsou nahrané na stránce https://cajthaml.eu/. Získává data z API od administrace. Využívá se framework Vue. Stránka obsahuje prezentační nástroj, prezentace, úkoly, přípravy na testy, domácí úkoly, kritéria hodnocení a další stránky.
 
+### Webový generátor zadání
+Jedná se o jednoduchou webovou aplikaci určenou ke generování zadání ve formátu JSON, které jsou využity v generátoru zadání. Obsahuje vše, co může daný soubor obsahovat. Převážně je aplikace určena pro rychlejší tvrobu. Napsáno ve Vue. 
+
 ### Administrace
 Jedná se o CMS od Strapi, ve kterém spravuji informace, které se mají zobrazit studentům. 
 

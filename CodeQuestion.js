@@ -20,7 +20,7 @@ class TextQuestion extends Question {
         return output;
     }
 
-    generateTest(question, settings) {
+    generateAssigment(question, settings) {
         let output = "";
 
         output += "<div class='code-container'>";

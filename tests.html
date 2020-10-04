@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>%name%</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            padding: 0px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8em;
+        }
+
+        p {
+            margin: 0
+        }
+
+        div.test {
+            page-break-after: always;
+        }
+
+        header {
+            margin-bottom: 20px;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header>.name b {
+            font-size: 1.6em;
+        }
+
+        header>.name p {
+            font-size: 0.9em;
+        }
+
+        header>.info {
+            display: flex;
+        }
+
+        header>.info>div {
+            min-width: 75px;
+            margin: 0 6px;
+        }
+
+        header>.info>div>.input {
+            min-height: 18px;
+            padding: 3px 0;
+            border-bottom: 1px solid black;
+        }
+
+        header>.info>div.class {
+            min-width: 50px;
+        }
+
+        header>.info>div.date {
+            min-width: 100px;
+        }
+
+        header>.info>div.grade>.input {
+            text-align: right;
+        }
+
+        main>.question {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            break-inside: avoid;
+        }
+
+        main>.question>.task {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main>.question>.task>.name {
+            display: flex;
+            font-weight: bold;
+        }
+
+        main>.question>.task>.name span {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        main>.question>.task>.name p {
+            font-size: 1.05em;
+        }
+
+        main>.question>.task>.points .space {
+            width: 20px;
+            display: inline-block;
+        }
+
+        main>.question>.help {
+            font-size: 0.7em;
+        }
+
+        main>.question>.help:last-of-type {
+            margin-bottom: 7px;
+        }
+
+        main>.question.text>.content .input {
+            width: 100%;
+            min-height: 18px;
+            padding: 3px 0;
+
+            border-bottom: 1px solid black;
+        }
+
+        main>.question.box>.content .box {
+            min-height: 18px;
+            padding: 3px 0 3px 10px;
+            margin: 5px 0;
+            border: 1px solid black;
+        }
+
+        main>.question.code>.content {
+            margin-top: 10px;
+        }
+
+        main>.question.code>.content>.code-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main>.question.code>.content>.code-container>.code {
+            counter-reset: code;
+            padding: 5px 10px;
+            height: 100%;
+            width: 40%;
+            border: 1px solid;
+            display: flex;
+            flex-direction: column;
+            font-size: 1.2em;
+            padding: 3px 0 !important;
+
+        }
+
+        main>.question.code>.content>.code-container>.code>code:before {
+            counter-increment: code;
+            content: counter(code) ". ";
+            display: inline-block;
+            text-align: right;
+            width: 4ch;
+            padding: 2px 2ch 2px 0;
+        }
+
+        main>.question.select>.content .options {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            margin-left: 40px;
+        }
+
+        main>.question.select>.content .options .option {
+            position: relative;
+            margin: 3px 0;
+        }
+
+        main>.question.select>.content .options .option:before {
+            position: absolute;
+
+            content: " ";
+            left: -30px;
+            width: 10px;
+            top: 3px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid black;
+        }
+
+        main>.question.select>.content .options .option.valid:before {
+            background-color: black;
+        }
+
+
+        main>.question.choices>.content .statements {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main>.question.choices>.content .statements .statement {
+            display: flex;
+            margin: 3px 0;
+        }
+
+        main>.question.choices>.content .statements .choices {
+            display: flex;
+            margin-right: 30px;
+        }
+
+        main>.question.choices>.content .statements .choices .choice {
+            margin-right: 12px;
+            position: relative;
+        }
+
+        main>.question.choices>.content .statements .choices .choice b {
+            position: relative;
+        }
+
+        main>.question.choices>.content .statements .choices .choice b:after {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid black;
+            transform: scale(1.3);
+        }
+
+        main>.question.fill .sentences .sentence {
+            margin: 10px 0;
+        }
+
+        main>.question.fill .sentences .sentence span.space {
+            text-decoration: underline;
+            width: 165px;
+            border-bottom: 1px solid black;
+            display: inline-block;
+            margin-top: 22px;
+            margin-bottom: -5px;
+        }
+    </style>
+</head>
+
+<body>
+    %tests%
+</body>
+
+</html>

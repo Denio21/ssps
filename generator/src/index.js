@@ -1,30 +1,40 @@
 const fs = require("fs");
 
-//const template = fs.readFileSync("template.html", "utf-8");
-const files = fs.readdirSync("data/");
+console.log("| Loading question types");
+const questions = {};
+
+const questionFiles = fs.readdirSync("src/questions");
+
+for (let questionFileName of questionFiles) {
+    if (questionFileName == "Question.js")
+        continue;
+
+    const q = require("./questions/" + questionFileName);
+    const question = new q();
+
+    questions[question.getName()] = question;
+
+    console.log("\\- | Loaded question type " + question.getName());
+}
+
+
+const testFiles = fs.readdirSync("data/");
 
 const SolutionGenerator = require("./generators/SolutionGenerator");
 const solutionGenerator = new SolutionGenerator();
+
 const TestGenerator = require("./generators/TestGenerator");
 const testGenerator = new TestGenerator();
 
-for (let fileName of files) {
-    if(!fileName.includes(".json"))
+for (let testFileName of testFiles) {
+    if (!testFileName.includes(".json"))
         continue;
 
-    const data = JSON.parse(fs.readFileSync("data/" + fileName));
+    const data = JSON.parse(fs.readFileSync("data/" + testFileName));
 
-    if(fileName.includes("test")) {
-        solutionGenerator.generate(fileName, data);
-        testGenerator.generate(fileName, data);
+    if (testFileName.includes("test")) {
+        solutionGenerator.generate(testFileName, data, questions);
+
+        testGenerator.generate(testFileName, data, questions);
     }
-
-    // TODO: idk if needed
-    if(fileName.includes("homework")) {
-
-    }
-
-    /*
-    if(data.shuffle.includes("questions"))
-        shuffleArray(data.questions);*/
 } 

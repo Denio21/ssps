@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>%name%</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,500&display=swap"
         rel="stylesheet">
@@ -20,19 +20,12 @@
             margin: 0
         }
 
-        div.input {
-            width: 100%;
-            min-height: 17px;
-            padding-bottom: 3px;
-            border-bottom: 1px solid black;
-        }
-
         div.test {
             page-break-after: always;
         }
 
         header {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
 
             display: flex;
             justify-content: space-between;
@@ -42,13 +35,23 @@
             font-size: 1.6em;
         }
 
+        header>.name p {
+            font-size: 0.9em;
+        }
+
         header>.info {
             display: flex;
         }
 
         header>.info>div {
-            min-width: 150px;
+            min-width: 75px;
             margin: 0 6px;
+        }
+
+        header>.info>div>.input {
+            min-height: 18px;
+            padding: 3px 0;
+            border-bottom: 1px solid black;
         }
 
         header>.info>div.class {
@@ -58,8 +61,9 @@
         header>.info>div.date {
             min-width: 100px;
         }
-        header>.info>div.points {
-            min-width: 140px;
+
+        header>.info>div.grade>.input {
+            text-align: right;
         }
 
         main>.question {
@@ -68,39 +72,59 @@
             break-inside: avoid;
         }
 
-        main>.question>.label {
-            font-size: 1.05em;
+        main>.question>.task {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main>.question>.task>.name {
+            display: flex;
             font-weight: bold;
         }
 
-        main>.question>.label span {
-            display: inline-block;
+        main>.question>.task>.name span {
             width: 20px;
             margin-right: 10px;
+        }
+
+        main>.question>.task>.name p {
+            font-size: 1.05em;
+        }
+
+        main>.question>.task>.points .space {
+            width: 20px;
+            display: inline-block;
         }
 
         main>.question>.help {
             font-size: 0.7em;
         }
+
         main>.question>.help:last-of-type {
             margin-bottom: 7px;
         }
 
-        main>.question.selectone .options,
-        main>.question.selectmultiple .options {
+        main>.question.text>.content .input {
+            width: 100%;
+            min-height: 18px;
+            padding: 3px 0;
+
+            border-bottom: 1px solid black;
+        }
+
+        main>.question.select>.content .options {
             display: flex;
             flex-direction: column;
+            margin-top: 10px;
             margin-left: 40px;
         }
 
-        main>.question.selectone .options .option,
-        main>.question.selectmultiple .options .option {
+        main>.question.select>.content .options .option {
             position: relative;
             margin: 3px 0;
         }
 
-        main>.question.selectone .options .option:before,
-        main>.question.selectmultiple .options .option:before {
+        main>.question.select>.content .options .option:before {
             position: absolute;
 
             content: " ";
@@ -109,42 +133,62 @@
             top: 3px;
             height: 10px;
             border-radius: 50%;
-            border: 3px solid black;
+            border: 2px solid black;
         }
 
-        main>.question.selectone .options .option.valid:before,
-        main>.question.selectmultiple .options .option.valid:before {
+        main>.question.select>.content .options .option.valid:before {
             background-color: black;
         }
 
-        main>.question.choices .statements {
+
+        main>.question.choices>.content .statements {
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
         }
 
-        main>.question.choices .statements .statement {
+        main>.question.choices>.content .statements .statement {
             display: flex;
             margin: 3px 0;
         }
 
-        main>.question.choices .statements .choices {
+        main>.question.choices>.content .statements .choices {
             display: flex;
             margin-right: 30px;
         }
 
-        main>.question.choices .statements .choices .choice {
+        main>.question.choices>.content .statements .choices .choice {
             margin-right: 12px;
             position: relative;
+        }
+
+        main>.question.choices>.content .statements .choices .choice b {
+            position: relative;
+        }
+
+        main>.question.choices>.content .statements .choices .choice b:after {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid black;
+            transform: scale(1.3);
         }
 
         main>.question.fill .sentences .sentence {
             margin: 10px 0;
         }
-        main>.question.fill .sentences .sentence span {
+
+        main>.question.fill .sentences .sentence span.space {
             text-decoration: underline;
-            /*width: 150px;*/
-            margin-top: 13px;
+            width: 165px;
+            border-bottom: 1px solid black;
             display: inline-block;
+            margin-top: 22px;
+            margin-bottom: -5px;
         }
     </style>
 </head>

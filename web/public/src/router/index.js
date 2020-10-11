@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Timer from '../views/timer/Timer.vue'
 import PrivacyPolicy from '../views/PrivacyPolicy.vue'
 import LectureHome from '../views/lecture/LectureHome.vue'
 import LecturePage from '../views/lecture/LecturePage.vue'
@@ -18,6 +19,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/timer',
+    name: 'timer',
+    component: Timer,
   },
   {
     path: '/podminky-pouzivani',

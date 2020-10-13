@@ -1,7 +1,7 @@
 const Question = require("./Question");
 const shuffle = require("../helper/Shuffle");
 
-class TextQuestion extends Question {
+class ListQuestion extends Question {
 
     getName() {
         return "list";
@@ -52,4 +52,4 @@ class TextQuestion extends Question {
 
 }
 
-module.exports = TextQuestion;
+module.exports = ListQuestion;
